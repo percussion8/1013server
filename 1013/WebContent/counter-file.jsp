@@ -11,6 +11,7 @@
 	String first = (String)session.getValue("checkfirst");
 	
 	String count_file = "c:/MonicaJSP/count.txt"; // 저장할 내용의 파일 생성
+	int result = 0;
 	if(cnt.getCount() == 0){
 		int j = 0;
 		String old = null;
@@ -21,7 +22,10 @@
 				if((old = input.readLine()) != null){ //1줄씩 읽어들임
 					int i = Integer.parseInt(old);
 					for(j=0; j<i; j++){
+						out.println("파일의 내용을 읽음. => " + old);
 						cnt.setCount();
+						result = cnt.getCount();
+						out.println("setcount 호출의 결과: " + result);
 					}
 					input.close(); // 파일닫기
 				}
@@ -58,3 +62,4 @@
 	}
 	out.print("현재까지 방문자 수 : " + count);
 %>
+
